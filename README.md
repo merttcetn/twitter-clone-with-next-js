@@ -76,7 +76,7 @@ npm run dev
 
 -   Redux Toolkit ile merkezi state yönetimi
 -   Post ve bookmark durumları için ayrı slice'lar
--   Async işlemler için thunk middleware: Redux Toolkit'in thunk middleware'i, API çağrıları gibi asenkron işlemleri yönetmek için kullanılır. Bu sayede API istekleri, veri yükleme durumları ve hata yönetimi merkezi olarak kontrol edilebilir.
+-   Asenkron işlemler için Redux Toolkit: API istekleri gibi zaman alan işlemleri yönetmek için Redux Toolkit'in özel araçları kullanıldı. Bu sayede veri yükleme ve hata durumları tek bir yerden kontrol edilebiliyor.
 
 ### Performans Optimizasyonları
 
