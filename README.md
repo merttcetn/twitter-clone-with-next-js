@@ -1,53 +1,119 @@
-## Başlarken
+# DogGO Frontend Task
 
-Uygulamayı çalıştırmak için aşağıdaki komutların herhangi birisini çalıştırabilirsin:
+Bu proje, DogGO Frontend görev değerlendirmesi için geliştirilmiş bir sosyal medya uygulamasıdır.
+
+## 🚀 Özellikler
+
+-   **Ana Sayfa**: Post akışı, arama özelliği ve yeni post paylaşma
+-   **Explore**: Etiketlere göre post filtreleme
+-   **Bookmarks**: Kaydedilen postları görüntüleme
+-   **Profil**: Kullanıcı postlarını listeleme
+-   **Sidebar**: Responsive tasarım, mobilde menü olarak açılma
+
+## 💻 Teknolojiler ve Kullanım Alanları
+
+-   Next.js 14 (Routing, Ve performans optimizasyonları için)
+-   TypeScript (Tip güvenliği ve daha iyi geliştirici deneyimi için)
+-   Redux Toolkit (Post beğenme, kaydetme gibi global state yönetimi için)
+-   Tailwind CSS (Responsive ve modern UI tasarımı için)
+-   JSON Server (Post ve kullanıcı verilerini simüle eden mock API için)
+
+## 🛠️ Kurulum
+
+1. Projeyi klonlayın:
+
+```bash
+git clone [repo-url]
+```
+
+2. Bağımlılıkları yükleyin:
+
+```bash
+npm install
+```
+
+3. JSON Server'ı başlatın:
+
+```bash
+npm run json-server
+```
+
+4. Geliştirme sunucusunu başlatın:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-## Görev
+## 🌟 Özellikler Detayı
 
-[Figma](https://www.figma.com/design/GTtrjzfO78hIUx0iXF8OhW/Doggo-FrontEnd-Task?node-id=371-3418&t=cq3ewo3a4uMk6DBe-1) linkindeki tasarımı olabildiğince aslına uygun bir şekilde gerçekleştirmeni talep ediyoruz. Açıklığa kavuşturmak için:
+### Ana Sayfa
 
-- Tasarım responsive olmalıdır. Tasarım büyük, orta ve küçük ölçekli cihazlar için ayrı ayrı verilmiş durumdadır.
-- Tasarım yalnızca ana sayfa tasarımını içermektedir. Bunun dışında 3 farklı sayfanın daha geliştirilmesi beklenmektedir: `#Explore`, `Bookmarks` ve `Profile`. Buradaki tasarım adaya bırakılmıştır ancak var olan tasarımla uyumlu olması beklenmektedir.
-- `#Exlore` sayfası postları etiketler aracılığıyla bulmak ve göstermek içindir.
-- `Bookmarks` daha önce beğenilen postları listelemek içindir.
-- `Profile` daha önce kişi tarafından paylaşılmış postları listelemek içindir.
-- Bu sayfalar arasında dolaşabilmek istiyoruz.
-- `Bookmarks` ve `Profile` sayfalarının içeriklerinin `redux` (`redux`, `redux-toolkit` farketmez) ile yönetilmesi beklenmektedir. Bir post'u beğendiğimizde ya da yeni bir post yayınladığımızda bunların redux'a kayıt edilmesi ve gerektiğinde de redux'tan çekilip gösterilmesi gerekmektedir.
-- `Ana sayfa` bir akış ekranıdır. Postlar burada en güncel olandan, en eski olana doğru listelenmelidir. Post'a tıkladığımızda bu post'a yapılmış yorumları görebilmeliyiz.
-- Bu ekranın verisi `data` klasörünün altındaki `post_dataset.json` dosyasına dayanmalıdır. Bir fake json API oluşturulup (`json-server` kütüphanesi kullanılabilir) bu sunucuya istek atılarak veriler çekilmelidir.
-- `Ana sayfa`da geliştirilmesi beklenen bir diğer işlevsellik ise `Search`'dür. Yazmayı bitirdikten yaklaşık `1500ms` sonra post içerikleri arasında yazılan kelime/cümle aranmalı ve böyle bir içerik mevcutsa akış içerisindeki veriler ile bunlar yer değiştirmelidir. `Search` boşsa akış gösterilmelidir.
+-   Post akışı (en yeniden en eskiye)
+-   Post içeriklerinde arama (1.5 sn debounce)
+-   Yeni post paylaşma
+-   Post detayında yorumları görüntüleme
+-   Post beğenme ve kaydetme
 
-Community içerisinde geliştirilen tüm kütüphaneler kullanılabilir. Kullanılması zorunlu olan paketler: `nextjs`, `redux`, `typescript` ve `json-server`'dır.
+### Explore
 
-> Projeyi teslim ederken dikkat etmen gereken en önemli şey `eslint` komutunun çalışması ve projenin başarılı bir şekilde `build` almasıdır.
-> Sizinle paylaştığımız dosyalar sorunsuz olmayabilir. Şüpheci olup karşılaşılabilecek problemleri de çözmenizi bekliyoruz.
+-   Etiketlere göre filtreleme
+-   Çoklu etiket seçimi
+-   Infinite scroll ile sayfalama
 
-## Daha İyi Ne Olabilir?
+### Bookmarks
 
-- Bileşenlerin, Sayfaların vd. testleri olabilir. Eğer aşinaysan belki bunları bir AI tool'u kullanarak bile yazdırabilirsin! Buna çok mutlu oluruz ^^
-- Yazdığın kodu dokümante edebilirsin.
-- Karşılaştığın zorlukları bizimle paylaşabilir ve bunlara nasıl çözümler getirdiğini anlatabilirsin.
-- Çözüm getiremediğin sorunlar mı var? O zaman bunlar için nasıl araştırmalar yaptın çözmek için hangi adımları izledin, detaylıca bizimle paylaşabilirsin.
-- Çalışma programını bizimle paylaşabilirsin. Biliyoruz ki aynı zamanda eğitimine devam ediyorsun. Zamanı yönetmek o kadar da kolay bir iş değil. Zaman yönetimi bizim için de kritik bir öneme sahip. Bu disiplin seni değerlendirirken belki bize de ufak bir fikir verebilir.
+-   Kaydedilen postları görüntüleme
+-   Kayıtları kaldırma
 
-## Vercel'e Yükleme ve Teslim
+### Profil
 
-Proje'nin zip dosyasını indirdikten sonra githubda 'initial commit' commiti ile yüklenmesi gerekmektedir, daha sonra proje üzerinde çalışmaya başlanmalıdır. Geliştirmeler main branchten farklı bir branchte yapılmalı son aşamada pull request ile birleşltirilmelidir. Geliştirmeler bittikten sonra github reposu `muhammeddeniz`, `bahtiyarerden` ve `baris-karan` paylaşılmalıdır.
+-   Kullanıcının paylaştığı postları listeleme
+-   Infinite scroll ile sayfalama
 
-Next.js uygulamasını yüklemenin en basit yolu [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) platformunu kullanmaktır.
+## 🔧 Teknik Detaylar
 
-Projenin Vercel'e yüklenerek eğer varsa projeye dair notlarınla birlikte preview linkinin de README.md dosyasına koyulmasını bekliyoruz. Aşağıdaki alan senin için!
+### State Yönetimi
 
-## Notlar ve Linkler
+-   Redux Toolkit ile merkezi state yönetimi
+-   Post ve bookmark durumları için ayrı slice'lar
+-   Async işlemler için thunk middleware: Redux Toolkit'in thunk middleware'i, API çağrıları gibi asenkron işlemleri yönetmek için kullanılır. Bu sayede API istekleri, veri yükleme durumları ve hata yönetimi merkezi olarak kontrol edilebilir.
 
-Preview Linki:
+### Performans Optimizasyonları
+
+-   Debounced search: Arama inputuna yazılan her karakterde istek atmak yerine, kullanıcı yazmayı bitirdikten 1.5 saniye sonra arama yapılır. Bu sayede gereksiz API istekleri önlenir.
+-   Infinite scroll: Sayfa sonuna gelindiğinde Intersection Observer API kullanılarak yeni postlar otomatik yüklenir. Bu sayede tüm postların tek seferde yüklenmesi engellenir ve performans artar.
+-   Önbelleğe alma stratejileri
+
+### Responsive Tasarım
+
+-   Mobile-first yaklaşım
+-   Tüm ekran boyutlarına uyumlu tasarım
+-   Tailwind CSS ile esnek layout
+
+## 🚦 API Endpoints
+
+-   `GET /posts?_sort=timestamp&_order=desc`: Tüm postları tarihe göre sıralayarak getir
+-   `GET /posts?q={query}&_sort=timestamp&_order=desc`: Post içeriklerinde arama yap ve sonuçları tarihe göre sırala
+-   `POST /posts`: Yeni post oluştur (timestamp otomatik eklenir)
+-   `GET /posts?username={username}&_sort=timestamp&_order=desc`: Kullanıcı postlarını tarihe göre sıralayarak getir
+-   `GET /posts?_page={page}&_limit={limit}`: Sayfalama için kullanılır, her sayfada belirli sayıda post getirir
+
+## 🔗 Faydalı Linkler
+
+-   [Figma Tasarımı](https://www.figma.com/design/GTtrjzfO78hIUx0iXF8OhW/Doggo-FrontEnd-Task?node-id=371-3418&t=cq3ewo3a4uMk6DBe-1)
+
+## 👨‍💻 Geliştirici Notları
+
+### Karşılaşılan Zorluklar ve Çözümler
+
+1. **Redux Immutability**: Comment tiplerinde yaşanan immutability sorunları için özel tip tanımlamaları ve dönüşümler uygulandı.
+2. **Infinite Scroll**: Intersection Observer API kullanılarak performanslı bir sonsuz scroll implementasyonu yapıldı.
+3. **Type Güvenliği**: TypeScript kullanarak değişken tiplerini önceden belirleyip, kod yazarken ve çalışırken oluşabilecek tip hatalarını engellemeye çalıştım.
+4. **Bookmark Özelliği**: Zaman kısıtından dolayı bookmark'ları kalıcı olarak kaydetme özelliği tam olarak implemente edilemedi. Şu an için bookmarklar sadece uygulama açık olduğu sürece saklanıyor ve sayfa yenilendiğinde kayboluyor. İleride localStorage veya backend entegrasyonu ile bu sorun çözülebilir.
+
+### Zaman Yönetimi
+
+-   İlk gün: Temel yapı ve ana sayfa implementasyonu
+-   İkinci gün: Explore ve Bookmarks sayfaları
+-   Üçüncü gün: Profil sayfası ve genel iyileştirmeler
+-   Son gün: Bug fixes, dokümantasyon, eslint ve build süreçleri. Özellikle eslint ve build süreçlerini ilk defa kullandığım için bu aşamada zorlandım ve süreç beklenenden uzun sürdü.
