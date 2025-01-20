@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "../components/Header";
 import Post from "../components/Post";
-import { Post as PostType, Comment } from "../types/index";
+import { Post as PostType } from "../types/index";
 
 interface ProfileScreenProps {
     onMenuClick: () => void;
@@ -178,6 +178,8 @@ export default function ProfileScreen({
                             {...post}
                             isSelected={selectedPost === post.id}
                             onPostClick={handlePostClick}
+                            comments={post.comments || []}
+                            tags={post.tags || []}
                         />
                     </div>
                 ))}

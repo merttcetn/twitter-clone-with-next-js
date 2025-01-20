@@ -1,10 +1,31 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, unlikePost } from "@/app/store/slices/postsSlice";
 import { addBookmark, removeBookmark } from "@/app/store/slices/bookmarksSlice";
 import type { RootState } from "@/app/store/store";
-import { PostProps } from "@/app/types";
+
+interface CommentType {
+    username: string;
+    content: string;
+    timestamp: string;
+}
+
+type PostProps = {
+    id: string;
+    name: string;
+    username: string;
+    content: string;
+    timestamp: string;
+    likes: number;
+    reposts: number;
+    comments: CommentType[];
+    tags: string[];
+    images?: string[];
+    isSelected: boolean;
+    onPostClick: (id: string) => void;
+    onBookmarkToggle?: () => void;
+};
 
 export default function Post({
     id,
@@ -15,10 +36,11 @@ export default function Post({
     likes,
     reposts,
     comments,
-    images,
+    /* images, */
     tags = [],
     isSelected,
     onPostClick,
+    onBookmarkToggle,
 }: PostProps) {
     const dispatch = useDispatch();
     const isLiked = useSelector((state: RootState) =>
@@ -30,36 +52,39 @@ export default function Post({
 
     const handleLikeClick = (e: React.MouseEvent) => {
         e.stopPropagation();
-        console.log("Like clicked for post:", id);
-        console.log("Current like status:", isLiked);
-
         if (isLiked) {
-            console.log("Unliking post:", { id, currentLikes: likes });
             dispatch(unlikePost(id));
         } else {
-            console.log("Liking post:", { id, currentLikes: likes });
             dispatch(likePost(id));
         }
     };
 
     const handleBookmarkClick = (e: React.MouseEvent) => {
         e.stopPropagation();
+
+        // Use the provided onBookmarkToggle if available
+        if (onBookmarkToggle) {
+            onBookmarkToggle();
+            return;
+        }
+
+        // Fallback to local bookmark handling
         if (isBookmarked) {
             dispatch(removeBookmark(id));
         } else {
-            const post = {
-                id,
-                name,
-                username,
-                content,
-                timestamp,
-                likes,
-                reposts,
-                comments,
-                tags: tags || [],
-            };
-            console.log("Bookmarking post:", post);
-            dispatch(addBookmark(post));
+            dispatch(
+                addBookmark({
+                    id,
+                    name,
+                    username,
+                    content,
+                    timestamp,
+                    likes,
+                    reposts,
+                    comments: [],
+                    tags: tags || [],
+                })
+            );
         }
     };
 
@@ -230,16 +255,16 @@ export default function Post({
                                 <div className="flex-1">
                                     <div className="flex items-center space-x-2">
                                         <p className="font-medium">
-                                            @{comment.username}
+                                            {comment.username || "Anonymous"}
                                         </p>
                                         <span className="text-gray-500 text-sm">
                                             {new Date(
-                                                comment.timestamp
+                                                comment.timestamp || Date.now()
                                             ).toLocaleDateString()}
                                         </span>
                                     </div>
                                     <p className="mt-1 text-gray-700">
-                                        {comment.content}
+                                        {comment.content || ""}
                                     </p>
                                 </div>
                             </div>

@@ -26,14 +26,11 @@ export default function HomeScreen({ onMenuClick }: HomeScreenProps) {
     const observer = useRef<IntersectionObserver | undefined>(undefined);
     const POSTS_PER_PAGE = 10;
     const [selectedPost, setSelectedPost] = useState<string | null>(null);
-    const [debouncedSearchQuery, setDebouncedSearchQuery] =
-        useState(searchQuery);
     const [newPostContent, setNewPostContent] = useState("");
 
     // Bunun yerine, searchQuery state'ini değiştirirken debounce uygulayalım
     useEffect(() => {
         const timer = setTimeout(() => {
-            setDebouncedSearchQuery(searchQuery);
             setPage(1); // Arama değiştiğinde sayfa 1'e dön
         }, 1500);
 
@@ -229,9 +226,12 @@ export default function HomeScreen({ onMenuClick }: HomeScreenProps) {
                     >
                         <Post
                             {...post}
-                            content={post.content || ""} // Convert null to empty string
+                            content={post.content || ""}
                             isSelected={selectedPost === post.id}
                             onPostClick={() => handlePostClick(post.id)}
+                            onBookmarkToggle={() => handleBookmarkToggle(post)}
+                            comments={[]}
+                            tags={post.tags || []}
                         />
                     </div>
                 ))}

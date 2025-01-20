@@ -14,6 +14,7 @@ export interface Post {
 export interface PostProps extends Post {
     isSelected: boolean;
     onPostClick: (id: string) => void;
+    onBookmarkToggle?: () => void;
 }
 
 export interface Comment {

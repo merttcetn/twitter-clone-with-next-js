@@ -20,15 +20,22 @@ const postsSlice = createSlice({
     initialState,
     reducers: {
         addPost: (state, action: PayloadAction<Post>) => {
-            // Add new post to the beginning of the array
-            state.posts.unshift(action.payload);
+            // Add new post to the beginning of the array with empty comments
+            const newPost = {
+                ...action.payload,
+                comments: [], // Simplify comments to avoid immutability issues
+            };
+            state.posts.unshift(newPost);
         },
         setPosts: (state, action: PayloadAction<Post[]>) => {
             // Merge new posts with existing ones, avoiding duplicates
             const existingIds = new Set(state.posts.map((post) => post.id));
-            const newPosts = action.payload.filter(
-                (post) => !existingIds.has(post.id)
-            );
+            const newPosts = action.payload
+                .filter((post) => !existingIds.has(post.id))
+                .map((post) => ({
+                    ...post,
+                    comments: [], // Simplify comments to avoid immutability issues
+                }));
             state.posts = [...state.posts, ...newPosts];
         },
         resetPosts: (state) => {

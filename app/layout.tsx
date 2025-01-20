@@ -26,8 +26,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body>
+        <html
+            lang="en"
+            className={`${geistSans.variable} ${geistMono.variable}`}
+        >
+            <body className={geistSans.className}>
                 <ReduxProvider>
                     <SidebarProvider>
                         <div className="flex bg-white min-h-screen text-black">

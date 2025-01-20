@@ -46,7 +46,7 @@ export default function ExploreScreen({ onMenuClick }: ExploreScreenProps) {
                 setError(null);
 
                 // Temel URL
-                let url = `http://localhost:3001/posts?_sort=timestamp&_order=desc&_page=${page}&_limit=${POSTS_PER_PAGE}`;
+                const url = `http://localhost:3001/posts?_sort=timestamp&_order=desc&_page=${page}&_limit=${POSTS_PER_PAGE}`;
 
                 // Tag filtresi varsa, tüm tagleri içeren postları getir
                 if (selectedTags.length > 0) {
@@ -227,6 +227,8 @@ export default function ExploreScreen({ onMenuClick }: ExploreScreenProps) {
                             content={post.content || ""}
                             isSelected={selectedPost === post.id}
                             onPostClick={() => handlePostClick(post.id)}
+                            comments={[]}
+                            tags={post.tags || []}
                         />
                     </div>
                 ))}

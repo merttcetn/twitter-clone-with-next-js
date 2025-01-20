@@ -35,6 +35,8 @@ export default function BookmarksScreen({ onMenuClick }: BookmarksScreenProps) {
                         content={post.content || ""}
                         isSelected={selectedPost === post.id}
                         onPostClick={() => handlePostClick(post.id)}
+                        comments={[]}
+                        tags={post.tags || []}
                     />
                 ))}
 

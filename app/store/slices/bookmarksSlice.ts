@@ -18,7 +18,11 @@ const bookmarksSlice = createSlice({
         addBookmark: (state, action: PayloadAction<Post>) => {
             console.log("Adding bookmark:", action.payload); // Debug için
             if (!state.bookmarkedPosts.includes(action.payload.id)) {
-                state.items.push(action.payload);
+                const newBookmark = {
+                    ...action.payload,
+                    comments: [], // Simplify comments to avoid immutability issues
+                };
+                state.items.push(newBookmark);
                 state.bookmarkedPosts.push(action.payload.id);
             }
         },
