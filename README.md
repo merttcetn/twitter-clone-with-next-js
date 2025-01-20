@@ -23,7 +23,7 @@ Bu proje, DogGO Frontend görev değerlendirmesi için geliştirilmiş bir sosya
 1. Projeyi klonlayın:
 
 ```bash
-git clone [repo-url]
+git clone https://github.com/merttcetn/doggo-task
 ```
 
 2. Bağımlılıkları yükleyin:
