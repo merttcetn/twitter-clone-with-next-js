@@ -99,10 +99,6 @@ npm run dev
 -   `GET /posts?username={username}&_sort=timestamp&_order=desc`: Fetch user-specific posts
 -   `GET /posts?_page={page}&_limit={limit}`: Paginated post retrieval
 
-## 🔗 Useful Links
-
--   [Figma Design](https://www.figma.com/design/GTtrjzfO78hIUx0iXF8OhW/Doggo-FrontEnd-Task?node-id=371-3418&t=cq3ewo3a4uMk6DBe-1)
-
 ## 👨‍💻 Developer Notes
 
 ### Technical Challenges & Solutions
