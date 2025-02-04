@@ -1,119 +1,120 @@
-# DogGO Frontend Task
+# Twitter Clone with Next.js
 
-Bu proje, DogGO Frontend görev değerlendirmesi için geliştirilmiş bir sosyal medya uygulamasıdır.
+A modern social media application built with Next.js, TypeScript, and Redux Toolkit. Features a clean, responsive design and real-time interactions.
 
-## 🚀 Özellikler
+## 🚀 Features
 
--   **Ana Sayfa**: Post akışı, arama özelliği ve yeni post paylaşma
--   **Explore**: Etiketlere göre post filtreleme
--   **Bookmarks**: Kaydedilen postları görüntüleme
--   **Profil**: Kullanıcı postlarını listeleme
--   **Sidebar**: Responsive tasarım, mobilde menü olarak açılma
+-   **Home Feed**: Real-time post stream with search functionality
+-   **Explore**: Discover posts through tag-based filtering
+-   **Bookmarks**: Save and organize your favorite posts
+-   **Profile**: View and manage your posts
+-   **Responsive Design**: Seamless experience across all devices
 
-## 💻 Teknolojiler ve Kullanım Alanları
+## 💻 Tech Stack
 
--   Next.js 14 (Routing, Ve performans optimizasyonları için)
--   TypeScript (Tip güvenliği ve daha iyi geliştirici deneyimi için)
--   Redux Toolkit (Post beğenme, kaydetme gibi global state yönetimi için)
--   Tailwind CSS (Responsive ve modern UI tasarımı için)
--   JSON Server (Post ve kullanıcı verilerini simüle eden mock API için)
+-   **Next.js 14**: For server-side rendering and optimal performance
+-   **TypeScript**: Ensuring type safety and better developer experience
+-   **Redux Toolkit**: Managing global state for posts and bookmarks
+-   **Tailwind CSS**: Creating a modern, responsive UI
+-   **JSON Server**: Simulating backend API for development
 
-## 🛠️ Kurulum
+## 🛠️ Installation
 
-1. Projeyi klonlayın:
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/merttcetn/doggo-task
+git clone https://github.com/merttcetn/twitter-clone-with-next-js
 ```
 
-2. Bağımlılıkları yükleyin:
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. JSON Server'ı başlatın:
+3. Start the mock API server:
 
 ```bash
 npm run json-server
 ```
 
-4. Geliştirme sunucusunu başlatın:
+4. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-## 🌟 Özellikler Detayı
+## 🌟 Feature Details
 
-### Ana Sayfa
+### Home Feed
 
--   Post akışı (en yeniden en eskiye)
--   Post içeriklerinde arama (1.5 sn debounce)
--   Yeni post paylaşma
--   Post detayında yorumları görüntüleme
--   Post beğenme ve kaydetme
+-   Chronological post feed
+-   Smart search with 1.5s debounce
+-   Create and share new posts
+-   View post comments
+-   Like and bookmark functionality
 
 ### Explore
 
--   Etiketlere göre filtreleme
--   Çoklu etiket seçimi
--   Infinite scroll ile sayfalama
+-   Filter posts by tags
+-   Multi-tag selection support
+-   Infinite scroll pagination
 
 ### Bookmarks
 
--   Kaydedilen postları görüntüleme
--   Kayıtları kaldırma
+-   Save posts for later
+-   Manage saved content
+-   Quick access to favorite posts
 
-### Profil
+### Profile
 
--   Kullanıcının paylaştığı postları listeleme
--   Infinite scroll ile sayfalama
+-   Personal post timeline
+-   Infinite scroll for seamless browsing
 
-## 🔧 Teknik Detaylar
+## 🔧 Technical Implementation
 
-### State Yönetimi
+### State Management
 
--   Redux Toolkit ile merkezi state yönetimi
--   Post ve bookmark durumları için ayrı slice'lar
--   Asenkron işlemler için Redux Toolkit: API istekleri gibi zaman alan işlemleri yönetmek için Redux Toolkit'in özel araçları kullanıldı. Bu sayede veri yükleme ve hata durumları tek bir yerden kontrol edilebiliyor.
+-   Centralized state with Redux Toolkit
+-   Separate slices for posts and bookmarks
+-   Async operations handled through Redux Toolkit's built-in tools
 
-### Performans Optimizasyonları
+### Performance Optimizations
 
--   Debounced search: Arama inputuna yazılan her karakterde istek atmak yerine, kullanıcı yazmayı bitirdikten 1.5 saniye sonra arama yapılır. Bu sayede gereksiz API istekleri önlenir.
--   Infinite scroll: Sayfa sonuna gelindiğinde Intersection Observer API kullanılarak yeni postlar otomatik yüklenir. Bu sayede tüm postların tek seferde yüklenmesi engellenir ve performans artar.
--   Önbelleğe alma stratejileri
+-   Debounced search functionality
+-   Infinite scroll using Intersection Observer API
+-   Caching strategies for improved load times
 
-### Responsive Tasarım
+### Responsive Design
 
--   Mobile-first yaklaşım
--   Tüm ekran boyutlarına uyumlu tasarım
--   Tailwind CSS ile esnek layout
+-   Mobile-first approach
+-   Fluid layouts for all screen sizes
+-   Flexible UI components with Tailwind CSS
 
-## 🚦 API Endpoints
+## 🚦 API Structure
 
--   `GET /posts?_sort=timestamp&_order=desc`: Tüm postları tarihe göre sıralayarak getir
--   `GET /posts?q={query}&_sort=timestamp&_order=desc`: Post içeriklerinde arama yap ve sonuçları tarihe göre sırala
--   `POST /posts`: Yeni post oluştur (timestamp otomatik eklenir)
--   `GET /posts?username={username}&_sort=timestamp&_order=desc`: Kullanıcı postlarını tarihe göre sıralayarak getir
--   `GET /posts?_page={page}&_limit={limit}`: Sayfalama için kullanılır, her sayfada belirli sayıda post getirir
+-   `GET /posts?_sort=timestamp&_order=desc`: Fetch chronological posts
+-   `GET /posts?q={query}&_sort=timestamp&_order=desc`: Search posts by content
+-   `POST /posts`: Create new posts (timestamp auto-generated)
+-   `GET /posts?username={username}&_sort=timestamp&_order=desc`: Fetch user-specific posts
+-   `GET /posts?_page={page}&_limit={limit}`: Paginated post retrieval
 
-## 🔗 Faydalı Linkler
+## 🔗 Useful Links
 
--   [Figma Tasarımı](https://www.figma.com/design/GTtrjzfO78hIUx0iXF8OhW/Doggo-FrontEnd-Task?node-id=371-3418&t=cq3ewo3a4uMk6DBe-1)
+-   [Figma Design](https://www.figma.com/design/GTtrjzfO78hIUx0iXF8OhW/Doggo-FrontEnd-Task?node-id=371-3418&t=cq3ewo3a4uMk6DBe-1)
 
-## 👨‍💻 Geliştirici Notları
+## 👨‍💻 Developer Notes
 
-### Karşılaşılan Zorluklar ve Çözümler
+### Technical Challenges & Solutions
 
-1. **Redux Immutability**: Comment tiplerinde yaşanan immutability sorunları için özel tip tanımlamaları ve dönüşümler uygulandı.
-2. **Infinite Scroll**: Intersection Observer API kullanılarak performanslı bir sonsuz scroll implementasyonu yapıldı.
-3. **Type Güvenliği**: TypeScript kullanarak değişken tiplerini önceden belirleyip, kod yazarken ve çalışırken oluşabilecek tip hatalarını engellemeye çalıştım.
-4. **Bookmark Özelliği**: Zaman kısıtından dolayı bookmark'ları kalıcı olarak kaydetme özelliği tam olarak implemente edilemedi. Şu an için bookmarklar sadece uygulama açık olduğu sürece saklanıyor ve sayfa yenilendiğinde kayboluyor. İleride localStorage veya backend entegrasyonu ile bu sorun çözülebilir.
+1. **Redux State Management**: Implemented custom type definitions and transformations to handle immutability challenges with comment structures
+2. **Infinite Scroll**: Built a performant scroll implementation using Intersection Observer API
+3. **Type Safety**: Comprehensive TypeScript implementation for robust error prevention
+4. **Bookmark System**: In-memory bookmark storage with plans for persistent storage implementation
 
-### Zaman Yönetimi
+### Time Management
 
--   İlk gün: Temel yapı ve ana sayfa implementasyonu
--   İkinci gün: Explore ve Bookmarks sayfaları
--   Üçüncü gün: Profil sayfası ve genel iyileştirmeler
--   Son gün: Bug fixes, dokümantasyon, eslint ve build süreçleri. Özellikle eslint ve build süreçlerini ilk defa kullandığım için bu aşamada zorlandım ve süreç beklenenden uzun sürdü.
+-   First day: Basic structure and home page implementation
+-   Second day: Explore and Bookmarks pages
+-   Third day: Profile page and general improvements
+-   Fourth day: Bug fixes, documentation, eslint and build processes. I had trouble with eslint and build processes for the first time, so it took longer than expected.
